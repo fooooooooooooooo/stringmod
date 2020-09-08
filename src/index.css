@@ -1,0 +1,143 @@
+@import "../node_modules/bulma/css/bulma.min.css";
+@import "../node_modules/highlight.js/styles/railscasts.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  user-select: text;
+}
+
+pre {
+  padding: 10px 12px;
+}
+.codebox {
+  background: whitesmoke;
+}
+.copy-container {
+  position: relative;
+}
+.copy-icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.copy-icon:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.copy-icon:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.copy-success-icon {
+  color: hsl(141, 53%, 53%);
+  position: absolute;
+  top: 0px;
+  right: 24px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.hljs {
+  background: transparent;
+  text-align: left;
+  color: #4a4a4a;
+}
+
+.stringmod {
+  text-align: center;
+}
+
+.title-bar {
+  -webkit-app-region: drag;
+  height: 24px;
+  width: 100vw;
+  background: whitesmoke;
+  padding: none;
+  margin: 0px;
+  text-align: center;
+  position: fixed;
+  z-index: 1000;
+  user-select: none;
+}
+
+.window-title {
+  position: relative;
+  top: 0px;
+}
+.title-bar-buttons-left {
+  -webkit-app-region: no-drag;
+  position: fixed;
+  top: 0px;
+  left: 6px;
+  padding-right: 5px;
+  background: transparent;
+  border: none;
+}
+.title-bar-buttons-right {
+  -webkit-app-region: no-drag;
+  position: fixed;
+  top: 0px;
+  right: 6px;
+  padding-left: 5px;
+  background: transparent;
+  border: none;
+}
+
+.title-bar-button {
+  padding: 0 3px 0 3px;
+  border-radius: 3px;
+}
+.title-bar-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.title-bar-button:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.close-button:hover {
+  background: rgba(255, 0, 0, 0.4);
+}
+.close-button:active {
+  background: rgba(255, 0, 0, 0.6);
+}
+
+.about-button {
+  padding: 0 3px 0 3px;
+  border-radius: 3px;
+}
+.about-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.about-button:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
+}
