@@ -22,6 +22,24 @@
   <div class="section">
     <!-- <h1 class="title stringmod">stringmod</h1> -->
     <div class="container">
+      <div id="about-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">About stringmod</p>
+            <button onClick="closeAboutModal()" class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <p>Developed using <a href="http://electronjs.org">Electron</a>, using <a href="http://bulma.io">Bulma CSS
+                framework</a>, and <a href="http://fontawesome.com">Fontawesome</a> icons.</p>
+            <p><a href="https://github.com/fooooooooooooooo/stringmod">Source</a></p>
+            <p><a href="https://github.com/fooooooooooooooo">Developer</a></p>
+          </section>
+          <footer class="modal-card-foot">
+            :)
+          </footer>
+        </div>
+      </div>
       <div class="columns">
         <div class="column is-half stuff">
           <div class="field">
@@ -57,6 +75,9 @@
     </div>
   </div>
   <script>
+    function closeAboutModal() {
+      document.getElementById('about-modal').className = 'modal';
+    }
     function calculateShit() {
       const utils = require('./utils');
 
@@ -119,6 +140,25 @@
     }
   </script>
   <script>
+    const { shell } = require('electron');
+    if (document.readyState != "complete") {
+      document.addEventListener('DOMContentLoaded', function () {
+        prepareTags()
+      }, false);
+    } else {
+      prepareTags();
+    }
+
+    function prepareTags() {
+      aTags = document.getElementsByTagName("a");
+      for (var i = 0; i < aTags.length; i++) {
+        aTags[i].setAttribute("onclick", "shell.openExternal('" + aTags[i].href + "')");
+        aTags[i].href = "#";
+      }
+      return false;
+    }
+  </script>
+  <script>
     (function () {
       const { BrowserWindow } = require('electron').remote
       var maximized = false;
@@ -132,7 +172,7 @@
         });
 
         document.getElementById("about-button").addEventListener("click", function (e) {
-          alert("yep");
+          document.getElementById("about-modal").className = "modal is-active";
         });
 
         document.getElementById("min-button").addEventListener("click", function (e) {
