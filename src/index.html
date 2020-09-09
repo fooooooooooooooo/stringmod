@@ -58,8 +58,38 @@
                 style="height: 62px;"></textarea>
             </div>
           </div>
-          <div class="control">
+          <div class="level">
             <button class="button is-primary" onClick="calculateShit()">Calculate</button>
+
+            <div class="dropdown is-right">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Size</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a onclick="size2()" id="size2" class="dropdown-item">
+                    0x00
+                  </a>
+                  <a onclick="size3()" id="size3" class="dropdown-item">
+                    0x000
+                  </a>
+                  <a onclick="size4()" id="size4" class="dropdown-item">
+                    0x0000
+                  </a>
+                  <a onclick="size5()" id="size5" class="dropdown-item">
+                    0x00000
+                  </a>
+                  <a onclick="size6()" id="size6" class="dropdown-item">
+                    0x000000
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="column is-half">
@@ -75,9 +105,32 @@
     </div>
   </div>
   <script>
+    function size2() {
+      changeSize(2);
+    }
+    function size3() {
+      changeSize(3);
+    }
+    function size4() {
+      changeSize(4);
+    }
+    function size5() {
+      changeSize(5);
+    }
+    function size6() {
+      changeSize(6);
+    }
+
+    function changeSize(size) {
+      document.getElementById(`size${window.padSize}`).classList.remove("is-active");
+      document.getElementById(`size${size}`).classList.add("is-active");
+      window.padSize = size;
+    }
+
     function closeAboutModal() {
       document.getElementById('about-modal').className = 'modal';
     }
+
     function calculateShit() {
       const utils = require('./utils');
 
@@ -87,7 +140,7 @@
 
       var output = document.getElementById("output");
 
-      window.shit = utils.Calculate(start, offset, names);
+      window.shit = utils.Calculate(start, offset, names, window.padSize);
       const fuck = utils.SetShit(window.shit);
 
       console.log(window.shit);
@@ -152,11 +205,49 @@
     function prepareTags() {
       aTags = document.getElementsByTagName("a");
       for (var i = 0; i < aTags.length; i++) {
-        aTags[i].setAttribute("onclick", "shell.openExternal('" + aTags[i].href + "')");
-        aTags[i].href = "#";
+        if (aTags[i].href.includes('http')) {
+          aTags[i].setAttribute("onclick", "shell.openExternal('" + aTags[i].href + "')");
+          aTags[i].href = "#";
+        }
       }
       return false;
     }
+  </script>
+  <script>
+    // Get all dropdowns on the page that aren't hoverable.
+    const dropdowns = document.querySelectorAll('.dropdown:not(.is-hoverable)');
+
+    if (dropdowns.length > 0) {
+      // For each dropdown, add event handler to open on click.
+      dropdowns.forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.stopPropagation();
+          el.classList.toggle('is-active');
+        });
+      });
+
+      // If user clicks outside dropdown, close it.
+      document.addEventListener('click', function (e) {
+        closeDropdowns();
+      });
+    }
+
+    /*
+     * Close dropdowns by removing `is-active` class.
+     */
+    function closeDropdowns() {
+      dropdowns.forEach(function (el) {
+        el.classList.remove('is-active');
+      });
+    }
+
+    // Close dropdowns if ESC pressed
+    document.addEventListener('keydown', function (event) {
+      let e = event || window.event;
+      if (e.key === 'Esc' || e.key === 'Escape') {
+        closeDropdowns();
+      }
+    });
   </script>
   <script>
     (function () {
@@ -164,6 +255,8 @@
       var maximized = false;
       function init() {
         window.shit = ' ';
+        window.padSize = 5;
+        document.getElementById(`size${window.padSize}`).classList.add("is-active");
         document.getElementById("copy-button").addEventListener("click", function (e) {
           var successIcon = document.getElementById("copy-success-icon");
           copyToClipboard(window.shit);
