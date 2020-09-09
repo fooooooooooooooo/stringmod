@@ -37,10 +37,10 @@ module.exports = {
     },
     SetShit(calculatedContent) {
         const hljs = require('highlight.js/lib/core');
-        const javascript = require('highlight.js/lib/languages/javascript');
-        hljs.registerLanguage('javascript', javascript);
+        const customlang = require('./customlang');
 
-        return hljs.highlight('javascript', calculatedContent);
+        hljs.registerLanguage('customlang', customlang);
+
+        return hljs.highlight('customlang', calculatedContent);
     }
 };
-//export { Calculate, ValidateHex, SetShit };
