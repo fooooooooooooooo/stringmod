@@ -20,7 +20,6 @@
     </div>
   </div>
   <div class="section">
-    <!-- <h1 class="title stringmod">stringmod</h1> -->
     <div class="container">
       <div id="about-modal" class="modal">
         <div class="modal-background"></div>
@@ -30,8 +29,10 @@
             <button onClick="closeAboutModal()" class="delete" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
-            <p>Developed using <a href="http://electronjs.org">Electron</a>, using <a href="http://bulma.io">Bulma CSS
-                framework</a>, and <a href="http://fontawesome.com">Fontawesome</a> icons.</p>
+            <p>Developed using
+              <a href="http://electronjs.org">Electron</a>, using
+              <a href="http://bulma.io">Bulma CSS framework</a>, and
+              <a href="http://fontawesome.com">Fontawesome</a> icons.</p>
             <p><a href="https://github.com/fooooooooooooooo/stringmod">Source</a></p>
             <p><a href="https://github.com/fooooooooooooooo">Developer</a></p>
           </section>
@@ -104,202 +105,11 @@
       </div>
     </div>
   </div>
-  <script>
-    function size2() {
-      changeSize(2);
-    }
-    function size3() {
-      changeSize(3);
-    }
-    function size4() {
-      changeSize(4);
-    }
-    function size5() {
-      changeSize(5);
-    }
-    function size6() {
-      changeSize(6);
-    }
-
-    function changeSize(size) {
-      document.getElementById(`size${window.padSize}`).classList.remove("is-active");
-      document.getElementById(`size${size}`).classList.add("is-active");
-      window.padSize = size;
-    }
-
-    function closeAboutModal() {
-      document.getElementById('about-modal').className = 'modal';
-    }
-
-    function calculateShit() {
-      const utils = require('./utils');
-
-      var start = document.getElementById("StartHex").value;
-      var offset = document.getElementById("OffsetHex").value;
-      var names = document.getElementById("NamesInput").value;
-
-      var output = document.getElementById("output");
-
-      window.shit = utils.Calculate(start, offset, names, window.padSize);
-      const fuck = utils.SetShit(window.shit);
-
-      console.log(window.shit);
-      output.innerHTML = `<code class="hljs javascript">${fuck.value}</code>`;
-    }
-
-    function handleStartChange() {
-      const utils = require('./utils');
-
-      var start = document.getElementById("StartHex");
-
-      if (!utils.ValidateHex(start.value)) {
-        start.className = "input is-danger";
-      } else if (event.target.value.charAt(1) === 'X') {
-        start.className = "input is-warning";
-      } else {
-        start.className = "input";
-      }
-    }
-
-    function handleOffsetChange() {
-      const utils = require('./utils');
-
-      var offset = document.getElementById("OffsetHex");
-
-      if (!utils.ValidateHex(offset.value)) {
-        offset.className = "input is-danger";
-      } else if (event.target.value.charAt(1) === 'X') {
-        offset.className = "input is-warning";
-      } else {
-        offset.className = "input";
-      }
-    }
-
-    function handleNamesChange() {
-      var namesInput = document.getElementById("NamesInput");
-
-      namesInput.style.height = 'auto';
-
-      if (parseInt(namesInput.scrollHeight) < 500) {
-        namesInput.style.height = (namesInput.scrollHeight + 2) + 'px';
-      } else {
-        namesInput.style.height = '500px';
-      }
-    }
-
-    function copyToClipboard(string) {
-      const { clipboard } = require('electron');
-      clipboard.writeText(string);
-    }
-  </script>
-  <script>
-    const { shell } = require('electron');
-    if (document.readyState != "complete") {
-      document.addEventListener('DOMContentLoaded', function () {
-        prepareTags()
-      }, false);
-    } else {
-      prepareTags();
-    }
-
-    function prepareTags() {
-      aTags = document.getElementsByTagName("a");
-      for (var i = 0; i < aTags.length; i++) {
-        if (aTags[i].href.includes('http')) {
-          aTags[i].setAttribute("onclick", "shell.openExternal('" + aTags[i].href + "')");
-          aTags[i].href = "#";
-        }
-      }
-      return false;
-    }
-  </script>
-  <script>
-    // Get all dropdowns on the page that aren't hoverable.
-    const dropdowns = document.querySelectorAll('.dropdown:not(.is-hoverable)');
-
-    if (dropdowns.length > 0) {
-      // For each dropdown, add event handler to open on click.
-      dropdowns.forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          e.stopPropagation();
-          el.classList.toggle('is-active');
-        });
-      });
-
-      // If user clicks outside dropdown, close it.
-      document.addEventListener('click', function (e) {
-        closeDropdowns();
-      });
-    }
-
-    /*
-     * Close dropdowns by removing `is-active` class.
-     */
-    function closeDropdowns() {
-      dropdowns.forEach(function (el) {
-        el.classList.remove('is-active');
-      });
-    }
-
-    // Close dropdowns if ESC pressed
-    document.addEventListener('keydown', function (event) {
-      let e = event || window.event;
-      if (e.key === 'Esc' || e.key === 'Escape') {
-        closeDropdowns();
-      }
-    });
-  </script>
-  <script>
-    (function () {
-      const { BrowserWindow } = require('electron').remote
-      var maximized = false;
-      function init() {
-        window.shit = ' ';
-        window.padSize = 5;
-        document.getElementById(`size${window.padSize}`).classList.add("is-active");
-        document.getElementById("copy-button").addEventListener("click", function (e) {
-          var successIcon = document.getElementById("copy-success-icon");
-          copyToClipboard(window.shit);
-          successIcon.className = "fas fa-check copy-success-icon visible";
-          setTimeout(() => { successIcon.className = "fas fa-check copy-success-icon hidden"; }, 1000);
-        });
-
-        document.getElementById("about-button").addEventListener("click", function (e) {
-          document.getElementById("about-modal").className = "modal is-active";
-        });
-
-        document.getElementById("min-button").addEventListener("click", function (e) {
-          var window = BrowserWindow.getFocusedWindow();
-          window.minimize();
-        });
-
-        document.getElementById("max-button").addEventListener("click", function (e) {
-          var window = BrowserWindow.getFocusedWindow();
-          if (maximized) {
-            window.unmaximize();
-            document.getElementById("max-button-icon").className = "far fa-window-maximize";
-            maximized = false;
-          } else {
-            window.maximize();
-            document.getElementById("max-button-icon").className = "far fa-window-restore";
-            maximized = true;
-          }
-        });
-
-        document.getElementById("close-button").addEventListener("click", function (e) {
-          var window = BrowserWindow.getFocusedWindow();
-          window.close();
-        });
-      };
-
-      document.onreadystatechange = function () {
-        if (document.readyState == "complete") {
-          init();
-        }
-      };
-
-    })();
-  </script>
+  <script src="./js/initshits.js" type="text/javascript"></script>
+  <script src="./js/functions.js" type="text/javascript"></script>
+  <script src="./js/linkfixer.js" type="text/javascript"></script>
+  <script src="./js/dropdowns.js" type="text/javascript"></script>
+  <script src="./js/modalhelp.js" type="text/javascript"></script>
 </body>
 
 </html>
