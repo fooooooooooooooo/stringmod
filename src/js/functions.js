@@ -1,84 +1,84 @@
-function size2() {
-  changeSize(2);
-}
-function size3() {
-  changeSize(3);
-}
-function size4() {
-  changeSize(4);
-}
-function size5() {
-  changeSize(5);
-}
-function size6() {
-  changeSize(6);
-}
+const utils = require('./utils');
+
+const startInput = document.getElementById('start-input');
+const offsetInput = document.getElementById('offset-input');
+const paddingInput = document.getElementById('padding-input');
+const namesInput = document.getElementById('names-input');
+const calculateButton = document.getElementById('calculate-button');
+
+const size2 = document.getElementById('size-2');
+const size3 = document.getElementById('size-3');
+const size4 = document.getElementById('size-4');
+const size5 = document.getElementById('size-5');
+const size6 = document.getElementById('size-6');
+
+const sizes = [size2, size3, size4, size5, size6];
+
+const output = document.getElementById('output');
+
+sizes.forEach((element, i) => {
+  element.addEventListener('click', () => {
+    const size = i + 2;
+    changeSize(size);
+  });
+});
+
+startInput.addEventListener('input', (e) => {
+  handleHexFieldChange(e);
+});
+
+offsetInput.addEventListener('input', (e) => {
+  handleHexFieldChange(e);
+});
+
+paddingInput.addEventListener('input', (e) => {
+  handleHexFieldChange(e);
+});
+
+namesInput.addEventListener('input', handleNamesChange);
+
+calculateButton.addEventListener('click', calculate);
 
 function changeSize(size) {
-  document
-    .getElementById(`size${window.padSize}`)
-    .classList.remove('is-active');
-  document.getElementById(`size${size}`).classList.add('is-active');
+  sizes[window.padSize - 2].classList.remove('is-active');
+  sizes[size - 2].classList.add('is-active');
   window.padSize = size;
 }
 
-function closeAboutModal() {
-  document.getElementById('about-modal').classList.toggle('is-active');
+function calculate() {
+  const start = startInput.value;
+  const offset = offsetInput.value;
+  const padding = paddingInput.value;
+  const names = namesInput.value;
+
+  const result = utils.calculate(start, offset, padding, names, window.padSize);
+  const formatted = utils.highlightOutput(result);
+
+  console.log(formatted);
+  output.innerHTML = `<code class='hljs javascript'>${formatted.value}</code>`;
 }
 
-function calculateShit() {
-  const utils = require('./utils');
+function handleHexFieldChange(event) {
+  const input = event.target;
 
-  var start = document.getElementById('StartHex').value;
-  var offset = document.getElementById('OffsetHex').value;
-  var names = document.getElementById('NamesInput').value;
-
-  var output = document.getElementById('output');
-
-  window.shit = utils.calculate(start, offset, names, window.padSize);
-  const fuck = utils.setShit(window.shit);
-
-  console.log(window.shit);
-  output.innerHTML = `<code class='hljs javascript'>${fuck.value}</code>`;
-}
-
-function handleStartChange() {
-  const utils = require('./utils');
-
-  var start = document.getElementById('StartHex');
-
-  if (!utils.validateHex(start.value)) {
-    start.className = 'input is-danger';
-  } else if (event.target.value.charAt(1) === 'X') {
-    start.className = 'input is-warning';
+  if (!utils.validateHex(input.value)) {
+    input.className = 'input is-danger';
+  } else if (input.value.charAt(1) === 'X') {
+    input.className = 'input is-warning';
   } else {
-    start.className = 'input';
+    input.className = 'input';
   }
 }
 
-function handleOffsetChange() {
-  const utils = require('./utils');
+function handleNamesChange(event) {
+  const input = event.target;
 
-  var offset = document.getElementById('OffsetHex');
+  input.style.height = 'auto';
 
-  if (!utils.validateHex(offset.value)) {
-    offset.className = 'input is-danger';
-  } else if (event.target.value.charAt(1) === 'X') {
-    offset.className = 'input is-warning';
+  if (parseInt(input.scrollHeight) < 500) {
+    input.style.height = namesInput.scrollHeight + 2 + 'px';
   } else {
-    offset.className = 'input';
-  }
-}
-
-function handleNamesChange() {
-  var namesInput = document.getElementById('NamesInput');
-
-  namesInput.style.height = 'auto';
-
-  if (parseInt(namesInput.scrollHeight) < 500) {
-    namesInput.style.height = namesInput.scrollHeight + 2 + 'px';
-  } else {
-    namesInput.style.height = '500px';
+    input.style.height = '500px';
   }
 }
 

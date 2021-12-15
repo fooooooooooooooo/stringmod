@@ -12,10 +12,7 @@
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
-  "author": {
-    "name": "fooooooooooooooo",
-    "email": "sessingd@gmail.com"
-  },
+  "author": "fooooooooooooooo <34515228+fooooooooooooooo@users.noreply.github.com>",
   "license": "MIT",
   "config": {
     "forge": {
