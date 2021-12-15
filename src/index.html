@@ -1,115 +1,155 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>stringmod</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>stringmod</title>
-  <link rel="stylesheet" href="index.css">
-</head>
-
-<body>
-  <div class="title-bar">
-    <div class="window-title">stringmod</div>
-    <div class="title-bar-buttons-left">
-      <span class="about-button" id="about-button"><i class="fas fa-ellipsis-h"></i></span>
-    </div>
-    <div class="title-bar-buttons-right">
-      <span class="title-bar-button" id="min-button"><i class="far fa-window-minimize"></i></span>
-      <span class="title-bar-button" id="max-button"><i id="max-button-icon" class="far fa-window-maximize"></i></span>
-      <span class="title-bar-button close-button" id="close-button"><i class="far fa-window-close"></i></span>
-    </div>
-  </div>
-  <div class="section">
-    <div class="container">
-      <div id="about-modal" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">About stringmod</p>
-            <button onClick="closeAboutModal()" class="delete" aria-label="close"></button>
-          </header>
-          <section class="modal-card-body">
-            <p>Developed using
-              <a href="http://electronjs.org">Electron</a>, using
-              <a href="http://bulma.io">Bulma CSS framework</a>, and
-              <a href="http://fontawesome.com">Fontawesome</a> icons.</p>
-            <p><a href="https://github.com/fooooooooooooooo/stringmod">Source</a></p>
-            <p><a href="https://github.com/fooooooooooooooo">Developer</a></p>
-          </section>
-          <footer class="modal-card-foot">
-            :)
-          </footer>
-        </div>
+  <body>
+    <div class="title-bar">
+      <div class="window-title">stringmod</div>
+      <div class="title-bar-buttons-left">
+        <span class="about-button" id="about-button">
+          <i class="fas fa-ellipsis-h"></i>
+        </span>
       </div>
-      <div class="columns">
-        <div class="column is-half stuff">
-          <div class="field">
-            <div class="control">
-              <input id="StartHex" type="text" class="input" placeholder="Start" oninput="handleStartChange()" />
-            </div>
+      <div class="title-bar-buttons-right">
+        <span class="title-bar-button" id="min-button">
+          <i class="far fa-window-minimize"></i>
+        </span>
+        <span class="title-bar-button" id="max-button">
+          <i id="max-button-icon" class="far fa-window-maximize"></i>
+        </span>
+        <span class="title-bar-button close-button" id="close-button">
+          <i class="far fa-window-close"></i>
+        </span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div id="about-modal" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">About stringmod</p>
+              <button
+                onClick="closeAboutModal()"
+                class="delete"
+                aria-label="close"
+              ></button>
+            </header>
+            <section class="modal-card-body">
+              <p>
+                Developed using <a href="http://electronjs.org">Electron</a>,
+                using <a href="http://bulma.io">Bulma CSS framework</a>, and
+                <a href="http://fontawesome.com">Fontawesome</a> icons.
+              </p>
+              <p>
+                <a href="https://github.com/fooooooooooooooo/stringmod">
+                  Source
+                </a>
+              </p>
+              <p><a href="https://github.com/fooooooooooooooo">Developer</a></p>
+            </section>
+            <footer class="modal-card-foot">:)</footer>
           </div>
-          <div class="field">
-            <div class="control">
-              <input id="OffsetHex" type="text" class="input" placeholder="Offset" oninput="handleOffsetChange()" />
-            </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <textarea id="NamesInput" class="input" type="text" placeholder="Names" oninput="handleNamesChange()"
-                style="height: 62px;"></textarea>
-            </div>
-          </div>
-          <div class="level">
-            <button class="button is-primary" onClick="calculateShit()">Calculate</button>
-
-            <div class="dropdown is-right">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Size</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
+        </div>
+        <div class="columns">
+          <div class="column is-half stuff">
+            <div class="field">
+              <div class="control">
+                <input
+                  id="StartHex"
+                  type="text"
+                  class="input"
+                  placeholder="Start"
+                  oninput="handleStartChange()"
+                />
               </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a onclick="size2()" id="size2" class="dropdown-item">
-                    0x00
-                  </a>
-                  <a onclick="size3()" id="size3" class="dropdown-item">
-                    0x000
-                  </a>
-                  <a onclick="size4()" id="size4" class="dropdown-item">
-                    0x0000
-                  </a>
-                  <a onclick="size5()" id="size5" class="dropdown-item">
-                    0x00000
-                  </a>
-                  <a onclick="size6()" id="size6" class="dropdown-item">
-                    0x000000
-                  </a>
+            </div>
+            <div class="field">
+              <div class="control">
+                <input
+                  id="OffsetHex"
+                  type="text"
+                  class="input"
+                  placeholder="Offset"
+                  oninput="handleOffsetChange()"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <textarea
+                  id="NamesInput"
+                  class="input"
+                  type="text"
+                  placeholder="Names"
+                  oninput="handleNamesChange()"
+                  style="height: 62px"
+                ></textarea>
+              </div>
+            </div>
+            <div class="level">
+              <button class="button is-primary" onClick="calculateShit()">
+                Calculate
+              </button>
+
+              <div class="dropdown is-right">
+                <div class="dropdown-trigger">
+                  <button
+                    class="button"
+                    aria-haspopup="true"
+                    aria-controls="dropdown-menu"
+                  >
+                    <span>Size</span>
+                    <span class="icon is-small">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div class="dropdown-content">
+                    <a onclick="size2()" id="size2" class="dropdown-item">
+                      0x00
+                    </a>
+                    <a onclick="size3()" id="size3" class="dropdown-item">
+                      0x000
+                    </a>
+                    <a onclick="size4()" id="size4" class="dropdown-item">
+                      0x0000
+                    </a>
+                    <a onclick="size5()" id="size5" class="dropdown-item">
+                      0x00000
+                    </a>
+                    <a onclick="size6()" id="size6" class="dropdown-item">
+                      0x000000
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="column is-half">
-          <div class="box codebox">
-            <div class="copy-container">
-              <i id="copy-success-icon" class="fas fa-check copy-success-icon hidden"></i>
-              <i id="copy-button" class="far fa-copy copy-icon"></i>
+          <div class="column is-half">
+            <div class="box codebox">
+              <div class="copy-container">
+                <i
+                  id="copy-success-icon"
+                  class="fas fa-check copy-success-icon hidden"
+                ></i>
+                <i id="copy-button" class="far fa-copy copy-icon"></i>
+              </div>
+              <pre id="output"><code class="hljs javascript">•</code></pre>
             </div>
-            <pre id="output"><code class="hljs javascript">•</code></pre>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <script src="./js/initshits.js" type="text/javascript"></script>
-  <script src="./js/functions.js" type="text/javascript"></script>
-  <script src="./js/linkfixer.js" type="text/javascript"></script>
-  <script src="./js/dropdowns.js" type="text/javascript"></script>
-  <script src="./js/modalhelp.js" type="text/javascript"></script>
-</body>
-
+    <script src="./js/initshits.js" type="text/javascript"></script>
+    <script src="./js/functions.js" type="text/javascript"></script>
+    <script src="./js/linkfixer.js" type="text/javascript"></script>
+    <script src="./js/dropdowns.js" type="text/javascript"></script>
+    <script src="./js/modalhelp.js" type="text/javascript"></script>
+  </body>
 </html>

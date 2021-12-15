@@ -7,15 +7,15 @@ Category: common
 */
 
 function customlang(hljs) {
-    return {
-        name: 'customlang',
-        contains: [
-            {
-                className: 'number',
-                begin: '^(0[xX])([0-9A-Fa-f]+)$',
-                end: '\\n'
-            },
-        ],
-    };
+  return {
+    name: 'customlang',
+    contains: [
+      {
+        className: 'number',
+        begin: '^(0[xX])([0-9A-Fa-f]+)$',
+        end: '\\n',
+      },
+    ],
+  };
 }
 module.exports = customlang;

@@ -1,10 +1,9 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
-//const { Calculate, ValidateHex, SetShit } = require('./utils');
-
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
+if (require('electron-squirrel-startup')) {
+  // eslint-disable-line global-require
   app.quit();
 }
 
@@ -17,8 +16,8 @@ const createWindow = () => {
     backgroundColor: '#ffffff',
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule: true
-    }
+      enableRemoteModule: true,
+    },
   });
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
