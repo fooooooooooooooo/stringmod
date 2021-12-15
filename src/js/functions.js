@@ -1,3 +1,4 @@
+const { clipboard } = require('electron');
 const utils = require('./utils');
 
 const startInput = document.getElementById('start-input');
@@ -15,6 +16,23 @@ const size6 = document.getElementById('size-6');
 const sizes = [size2, size3, size4, size5, size6];
 
 const output = document.getElementById('output');
+
+const themeButton = document.getElementById('theme-button');
+
+themeButton.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  document.body.classList.toggle('light');
+
+  if (document.body.classList.contains('dark')) {
+    themeButton.innerHTML = '<i class="fas fa-sun"></i>';
+    localStorage.setItem('theme', 'dark');
+  }
+
+  if (document.body.classList.contains('light')) {
+    themeButton.innerHTML = '<i class="fas fa-moon"></i>';
+    localStorage.setItem('theme', 'light');
+  }
+});
 
 sizes.forEach((element, i) => {
   element.addEventListener('click', () => {
@@ -52,6 +70,7 @@ function calculate() {
   const names = namesInput.value;
 
   const result = utils.calculate(start, offset, padding, names, window.padSize);
+  window.output = result;
   const formatted = utils.highlightOutput(result);
 
   console.log(formatted);
@@ -83,6 +102,5 @@ function handleNamesChange(event) {
 }
 
 function copyToClipboard(string) {
-  const { clipboard } = require('electron');
   clipboard.writeText(string);
 }

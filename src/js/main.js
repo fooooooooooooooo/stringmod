@@ -20,7 +20,7 @@ function addEventListeners() {
   const copyButton = document.getElementById('copy-button');
   copyButton.addEventListener('click', () => {
     const successIcon = document.getElementById('copy-success-icon');
-    copyToClipboard(window.shit);
+    copyToClipboard(window.output);
     successIcon.className = 'fas fa-check copy-success-icon visible';
     setTimeout(() => {
       successIcon.className = 'fas fa-check copy-success-icon hidden';

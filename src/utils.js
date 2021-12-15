@@ -26,7 +26,7 @@ function calculate(startHex, offsetHex, paddingHex, nameString, paddingSize) {
     workingInt += padding;
   }
 
-  return output.trimStart();
+  return output.trim();
 }
 
 function padHex(string, size) {
