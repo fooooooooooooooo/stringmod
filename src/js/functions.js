@@ -94,10 +94,10 @@ function handleNamesChange(event) {
 
   input.style.height = 'auto';
 
-  if (parseInt(input.scrollHeight) < 500) {
+  if (parseInt(input.scrollHeight) > 0) {
     input.style.height = namesInput.scrollHeight + 2 + 'px';
   } else {
-    input.style.height = '500px';
+    input.style.height = '0px';
   }
 }
 

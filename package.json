@@ -1,7 +1,7 @@
 {
   "name": "stringmod",
   "productName": "stringmod",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Stringmod is the worlds first palmod location finder helper tool",
   "main": "src/index.js",
   "scripts": {

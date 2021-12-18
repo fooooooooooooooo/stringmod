@@ -30,124 +30,127 @@
         </span>
       </div>
     </div>
-    <div class="section">
-      <div class="container">
-        <div id="about-modal" class="modal">
-          <div class="modal-background"></div>
-          <div class="modal-card">
-            <header class="modal-card-head">
-              <p class="modal-card-title">About stringmod</p>
-              <button
-                id="close-modal"
-                class="delete"
-                aria-label="close"
-              ></button>
-            </header>
-            <section class="modal-card-body">
-              <p>
-                Developed using <a href="http://electronjs.org">Electron</a>,
-                using <a href="http://bulma.io">Bulma CSS framework</a>, and
-                <a href="http://fontawesome.com">Fontawesome</a> icons.
-              </p>
-              <br />
-              <p>
-                <i class="fab fa-github"></i>
-                <a href="https://github.com/fooooooooooooooo/stringmod">
-                  Source
-                </a>
-              </p>
-            </section>
-            <footer class="modal-card-foot">:)</footer>
+    <div class="scroller">
+      <section>
+        <div class="container">
+          <div id="about-modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+              <header class="modal-card-head">
+                <p class="modal-card-title">About stringmod</p>
+                <button
+                  id="close-modal"
+                  class="delete"
+                  aria-label="close"
+                ></button>
+              </header>
+              <section class="modal-card-body">
+                <p>
+                  Developed using <a href="http://electronjs.org">Electron</a>,
+                  using <a href="http://bulma.io">Bulma CSS framework</a>, and
+                  <a href="http://fontawesome.com">Fontawesome</a> icons.
+                </p>
+                <br />
+                <p>
+                  <i class="fab fa-github"></i>
+                  <a href="https://github.com/fooooooooooooooo/stringmod">
+                    Source
+                  </a>
+                </p>
+              </section>
+              <footer class="modal-card-foot">:)</footer>
+            </div>
           </div>
-        </div>
-        <div class="columns">
-          <div class="column is-half stuff">
-            <div class="field">
-              <div class="control">
-                <input
-                  id="start-input"
-                  type="text"
-                  class="input"
-                  placeholder="Start"
-                />
-              </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <input
-                  id="offset-input"
-                  type="text"
-                  class="input"
-                  placeholder="Offset"
-                />
-              </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <input
-                  id="padding-input"
-                  type="text"
-                  class="input"
-                  placeholder="Padding"
-                />
-              </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <textarea
-                  id="names-input"
-                  class="input"
-                  type="text"
-                  placeholder="Names"
-                  style="height: 62px"
-                ></textarea>
-              </div>
-            </div>
-            <div class="level">
-              <button id="calculate-button" class="button is-primary">
-                Calculate
-              </button>
-
-              <div class="dropdown is-right">
-                <div class="dropdown-trigger">
-                  <button
-                    class="button"
-                    aria-haspopup="true"
-                    aria-controls="dropdown-menu"
-                  >
-                    <span>Size</span>
-                    <span class="icon is-small">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </button>
+          <div class="columns">
+            <div class="column is-half stuff">
+              <div class="field">
+                <div class="control">
+                  <input
+                    id="start-input"
+                    type="text"
+                    class="input"
+                    placeholder="Start"
+                  />
                 </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                  <div class="dropdown-content">
-                    <a id="size-2" class="dropdown-item"> 0x00 </a>
-                    <a id="size-3" class="dropdown-item"> 0x000 </a>
-                    <a id="size-4" class="dropdown-item"> 0x0000 </a>
-                    <a id="size-5" class="dropdown-item"> 0x00000 </a>
-                    <a id="size-6" class="dropdown-item"> 0x000000 </a>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input
+                    id="offset-input"
+                    type="text"
+                    class="input"
+                    placeholder="Offset"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <input
+                    id="padding-input"
+                    type="text"
+                    class="input"
+                    placeholder="Padding"
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <textarea
+                    id="names-input"
+                    class="input"
+                    type="text"
+                    placeholder="Names"
+                    style="height: 62px"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="level">
+                <button id="calculate-button" class="button is-primary">
+                  Calculate
+                </button>
+
+                <div class="dropdown is-right">
+                  <div class="dropdown-trigger">
+                    <button
+                      class="button"
+                      aria-haspopup="true"
+                      aria-controls="dropdown-menu"
+                    >
+                      <span>Size</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      <a id="size-2" class="dropdown-item"> 0x00 </a>
+                      <a id="size-3" class="dropdown-item"> 0x000 </a>
+                      <a id="size-4" class="dropdown-item"> 0x0000 </a>
+                      <a id="size-5" class="dropdown-item"> 0x00000 </a>
+                      <a id="size-6" class="dropdown-item"> 0x000000 </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="column is-half">
-            <div class="box codebox">
-              <div class="copy-container">
-                <i
-                  id="copy-success-icon"
-                  class="fas fa-check copy-success-icon hidden"
-                ></i>
-                <i id="copy-button" class="far fa-copy copy-icon"></i>
+            <div class="column is-half">
+              <div class="box codebox">
+                <div class="copy-container">
+                  <i
+                    id="copy-success-icon"
+                    class="fas fa-check copy-success-icon hidden"
+                  ></i>
+                  <i id="copy-button" class="far fa-copy copy-icon"></i>
+                </div>
+                <pre id="output"><code class="hljs javascript">•</code></pre>
               </div>
-              <pre id="output"><code class="hljs javascript">•</code></pre>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
+
     <script>
       const theme = localStorage.getItem('theme');
 

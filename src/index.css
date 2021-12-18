@@ -19,6 +19,11 @@
   --text-secondary: #7f828d;
   --icons: #80838d;
 }
+html,
+body {
+  background: var(--bg-1);
+  overflow: hidden;
+}
 
 body {
   margin: 0;
@@ -28,7 +33,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
-  background: var(--bg-1);
 
   height: 100vh;
 }
@@ -62,6 +66,7 @@ pre {
 
 .copy-icon:hover {
   background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .copy-icon:active {
@@ -96,6 +101,23 @@ pre {
   user-select: none;
 
   display: flex;
+}
+
+.scroller {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100vw;
+  height: calc(100vh - 28px);
+  overflow-y: auto;
+}
+
+section {
+  flex-grow: 1;
+  padding-top: 1em;
+}
+
+.container > .columns {
+  margin: 0;
 }
 
 .window-title {
@@ -154,10 +176,6 @@ pre {
   cursor: pointer;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 .visible {
   visibility: visible;
   opacity: 1;
@@ -182,6 +200,7 @@ input,
   background-color: var(--bg-2);
   border-radius: 4px;
   color: var(--text-primary);
+  resize: none;
 }
 
 .dark .input,
@@ -237,4 +256,19 @@ code,
 .modal-card-body {
   background-color: var(--bg-1);
   color: var(--text-secondary);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--bg-3);
 }
